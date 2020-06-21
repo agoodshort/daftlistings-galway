@@ -10,12 +10,15 @@ These instructions will get you a copy of the project up and running on your loc
 - Python3
 - [daftlistings](https://github.com/AnthonyBloomer/daftlistings)
 - mySQL/mariaDB
+- pip install matplotlib
 
 ## Installing
 
 Assuming you have already a database and python3 installed.
 
 ### 1. Install the [daftlistings](https://github.com/AnthonyBloomer/daftlistings) library
+
+pip install matplotlib
 
 ```
 virtualenv env
