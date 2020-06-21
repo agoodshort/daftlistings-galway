@@ -26,7 +26,7 @@ pip install daftlistings
 ### 2. Clone this repository
 
 ```
-git clone 
+git clone https://github.com/goodshort/daftlistings-galway.git
 ```
 
 ### 3. Point the scripts to your database
