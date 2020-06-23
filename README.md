@@ -48,7 +48,7 @@ mysql -u <username> -p < database.sql
 ### 4. Edit the scripts with your config
 Edit [search_and_write_to_db.py](search_and_write_to_db.py) and [plot_results.py](plot_results.py) with your database credentials.
 
-Edit [launch.sh] with the correct location of your WordPress installation and repo's location.
+Edit [launch.sh](launch.sh) with the correct location of your WordPress installation and repo's location.
 
 ### 5. Test the script
 I recommend at first to run the script to be sure that everything happens as desired.
