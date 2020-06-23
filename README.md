@@ -3,42 +3,28 @@ A python script to search for houses for sales in Galway area and store results 
 
 ## Description
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The installation steps will help you to install the required bits and to configure it based on your need. 
 
 ## Prerequisites
 
+- [wp-cli](https://make.wordpress.org/cli/handbook/) - _If required_
 - mySQL/mariaDB
-- [wp-cli](https://make.wordpress.org/cli/handbook/)
 - Python3
   - [daftlistings](https://github.com/AnthonyBloomer/daftlistings)
   - [matplotlib](https://matplotlib.org/)
 
 ## Installing
 
-Assuming you have already a database and python3 installed.
+### Disclaimer
+
+- Below I am assuming you have already a database and python3 installed.
+- Please consider to run these commands and scripts with appropriate user privileges to directories and files. I recommend either creating a dedicated user or using a user with with required privileges.
 
 ### 1. Install python libraries
 
 ```shell
 pip install daftlistings
 pip install matplotlib
-```
-
-### 2. Install wp-cli
-
-```shell
-# Download
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-# Check if it works
-php wp-cli.phar --info
-
-# Move wp-cli to your PATH
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
-
-# Check if everything is okay
-wp --info
 ```
 
 ### 2. Clone this repository
@@ -56,9 +42,48 @@ mysql -u <username> -p < database.sql
 ### 4. Add your credentials for database connection
 Edit [search_and_write_to_db.py](search_and_write_to_db.py) and [plot_results.py](plot_results.py) with your database credentials.
 
-### 5. Run the script
+### 5. Test the script
+I recommend at first to run the script to be sure that everything happens as desired.
+```shell
+./launch.sh
+```
 
-### To finish
+### 6. Create a cron job
+
+If the test in step 5. was successful, you can go ahead and automate this script to run everyday to retrieve data.
+
+```shell
+crontab -e
+```
+And add a line in the file with absolute path to the script (ie. below to run my script everyday at 14:00)
+```
+0 14 * * * /home/pi/GitHub/daftlistings-galway/launch.sh
+```
+
+## Extra
+
+### Monitoring your cron jobs for any issues
+
+```shell
+grep CRON /var/log/syslog
+```
+
+### Install wp-cli
+
+```shell
+# Download
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+# Check if it works
+php wp-cli.phar --info
+
+# Move wp-cli to your PATH
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+
+# Check if everything is okay
+wp --info
+```
 
 ## Enhancement 
 - [ ] Create a config file to store credential and wordpress location
