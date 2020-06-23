@@ -20,8 +20,6 @@ Assuming you have already a database and python3 installed.
 ### 1. Install python libraries
 
 ```shell
-virtualenv env
-source env/bin/activate
 pip install daftlistings
 pip install matplotlib
 ```
