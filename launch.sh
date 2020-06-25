@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "#############################################################"
+date
+
 echo "# 1.Setting variables to correct directory"
 # Edit variables to match your directories location
 DAFTLISTINGS='/home/pi/GitHub/daftlistings-galway'
