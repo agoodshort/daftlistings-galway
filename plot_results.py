@@ -11,20 +11,22 @@ db = MySQLdb.connect("localhost","<username>","<password>","daftlistings" )
 cursor = db.cursor()
 
 # Setting the figure size
-fig = plt.figure(figsize=(10,5))
+fig = plt.figure()
 
 # Plot Galway City Centre
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway City Centre';")
 X = []
 for row in cursor:
     X.append(row[0])
+
+## Set dates as X
+plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%b-%d'))
+
+## Plot results as Y1
 Y1 = [] 
 for row in cursor:
     Y1.append(row[2])
 plt.plot_date(X,Y1, label="Galway City Centre")
-
-# Set dates as X
-plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%b-%d'))
 
 # Plot Galway City Suburbs
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway City Suburbs';")
