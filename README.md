@@ -63,17 +63,19 @@ If the test in step 5. was successful, you can go ahead and automate this script
 ```shell
 crontab -e
 ```
-And add a line at the bottom of the file with absolute path to the script (ie. below to run my script everyday at 14:00)
+And add a line at the bottom of the file with absolute path to the script (ie. below to run my script everyday at 14:30)
 ```
-0 14 * * * /home/pi/GitHub/daftlistings-galway/launch.sh
+30 14 * * *  /home/pi/GitHub/daftlistings-galway/launch.sh > /home/pi/GitHub/daftlistings-galway/cron.log 2>&1
 ```
 
 ## Extra
 
 ### Monitoring your cron jobs for any issues
 
+If you created your cron job following the step above, you can view the log generated to troubleshoot with the command below:
+
 ```shell
-grep CRON /var/log/syslog
+less /home/pi/GitHub/daftlistings-galway/cron.log
 ```
 
 ### Install wp-cli
