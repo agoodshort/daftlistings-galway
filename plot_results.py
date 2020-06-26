@@ -17,7 +17,8 @@ fig = plt.figure()
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway City Centre';")
 X = []
 for row in cursor:
-    X.append(row[0])
+    if not row[0] in X:
+        X.append(row[0])
 
 ## Set dates as X
 plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%b-%d'))
@@ -26,21 +27,21 @@ plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%b-%d'))
 Y1 = [] 
 for row in cursor:
     Y1.append(row[2])
-plt.plot_date(X,Y1, label="Galway City Centre")
+plt.plot_date(X,Y1, label="Galway City Centre",fmt='-', linewidth=2)
 
 # Plot Galway City Suburbs
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway City Suburbs';")
 Y2 = []
 for row in cursor:
     Y2.append(row[2])
-plt.plot_date(X,Y2, label="Galway City Suburbs")
+plt.plot_date(X,Y2, label="Galway City Suburbs",fmt='-', linewidth=2)
 
 # Plot Galway Commuter Towns
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway Commuter Towns';")
 Y3 = []
 for row in cursor:
     Y3.append(row[2])
-plt.plot_date(X,Y3, label="Galway Commuter Towns")
+plt.plot_date(X,Y3, label="Galway Commuter Towns",fmt='-', linewidth=2)
 
 # Labeling the X-axis 
 plt.xlabel('Date') 
