@@ -5,7 +5,7 @@ import MySQLdb
 
 # Open database connection
 # Edit with your database credentials
-db = MySQLdb.connect("localhost","<username>","<password>","daftlistings" )
+db = MySQLdb.connect("localhost","root","AdriPi180","daftlistings" )
 
 # Prepare a cursor object using cursor() method
 cursor = db.cursor()
@@ -22,26 +22,27 @@ for row in cursor:
 
 ## Set dates as X
 plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%b-%d'))
+plt.gca().xaxis.set_major_locator(DayLocator(interval=5))
 
 ## Plot results as Y1
 Y1 = [] 
 for row in cursor:
     Y1.append(row[2])
-plt.plot_date(X,Y1, label="Galway City Centre",fmt='-', linewidth=2)
+plt.plot(X,Y1, label="Galway City Centre")
 
 # Plot Galway City Suburbs
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway City Suburbs';")
 Y2 = []
 for row in cursor:
     Y2.append(row[2])
-plt.plot_date(X,Y2, label="Galway City Suburbs",fmt='-', linewidth=2)
+plt.plot(X,Y2, label="Galway City Suburbs")
 
 # Plot Galway Commuter Towns
 cursor.execute("SELECT date, area, averagePrice FROM GalwayReview WHERE area='Galway Commuter Towns';")
 Y3 = []
 for row in cursor:
     Y3.append(row[2])
-plt.plot_date(X,Y3, label="Galway Commuter Towns",fmt='-', linewidth=2)
+plt.plot(X,Y3, label="Galway Commuter Towns")
 
 # Labeling the X-axis 
 plt.xlabel('Date') 
