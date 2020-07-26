@@ -95,6 +95,14 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 wp --info
 ```
 
+### Embed picture in on a WordPress page
+
+I faced an issue with image caching from browsers which I solved by pointing to my image using HTML. Found the solution [here](https://stackoverflow.com/questions/728616/disable-cache-for-some-images).
+
+```html
+<img src="/wp-content/uploads/2020/06/price_average.png?nocache=<?php echo time(); ?>">
+```
+
 ## Enhancement 
 - [ ] Create a config file to store credential and wordpress location
 
