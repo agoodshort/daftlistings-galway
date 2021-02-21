@@ -1,6 +1,9 @@
 # daftlistings-galway
 A python script to search for houses for sale in the Galway area and store results in a database locally.
 
+### Update 21/Feb/2021
+Unfortunately, the graph cannot update anymore since end of 2020 because of a new UI update on the daft.ie website ([issue #82](https://github.com/AnthonyBloomer/daftlistings/issues/82)).
+
 ## Description
 
 This repo will assist you to review the Galway house market by retrieve data daily from [daft.ie](https://www.daft.ie), plotting the result and automatically importing to your WordPress media library.
